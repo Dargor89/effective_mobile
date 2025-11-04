@@ -1,26 +1,15 @@
 @echo off
-chcp 65001 >nul
-echo 🎯 Effective Mobile Tests
-echo =========================
+echo === Запуск тестов в Docker ===
 
-echo 🔨 Сборка Docker образа...
-docker build -t effective-tests .
+:: Собираем образ
+docker-compose build
 
-if %errorlevel% neq 0 (
-    echo ❌ Ошибка сборки образа
-    pause
-    exit /b 1
-)
+:: Запускаем тесты
+docker-compose up tests
 
-echo 🚀 Запуск тестов в Docker...
-docker run --rm effective-tests
+:: Останавливаем контейнеры
+docker-compose down
 
-if %errorlevel% neq 0 (
-    echo.
-    echo ❌ Тесты завершены с ошибками
-) else (
-    echo.
-    echo ✅ Тесты завершены успешно!
-)
-
+echo === Тесты завершены ===
+echo Отчеты сохранены в папке ./reports
 pause
