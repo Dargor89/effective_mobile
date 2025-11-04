@@ -1,27 +1,26 @@
-FROM python:3.9-slim
+FROM python:3.10-slim
+
+# Установка системных зависимостей
+RUN apt-get update && apt-get install -y \
+    wget \
+    curl \
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Копируем файлы проекта
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
 
-# Устанавливаем зависимости
-RUN pip install --no-cache-dir \
-    behave \
-    selenium \
-    webdriver-manager \
-    requests \
-    pytest
+# Создаем директории и копируем драйвер
+RUN mkdir -p reports drivers
 
-# Устанавливаем Chrome
-RUN apt-get update && apt-get install -y \
-    wget \
-    gnupg \
-    unzip \
-    && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-    && apt-get update \
-    && apt-get install -y google-chrome-stable
+# Делаем драйвер исполняемым (если это бинарный файл)
+RUN if [ -f "/app/drivers/chromedriver" ]; then chmod +x /app/drivers/chromedriver; fi
 
-# Запускаем тесты
-CMD ["behave", "features/main_page.feature"]
+# Или если драйвер в другой директории, скопируйте его
+# COPY drivers/chromedriver /app/drivers/chromedriver
+# RUN chmod +x /app/drivers/chromedriver

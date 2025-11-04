@@ -3,8 +3,8 @@ version: '3.8'
 services:
   tests:
     build: .
-    container_name: effective_mobile_tests
-    working_dir: /app
+    container_name: effective-mobile-tests
     volumes:
-      - .:/app
-    command: behave features/main_page.feature --no-capture
+      - ./reports:/app/reports
+    environment:
+      - PYTHONPATH=/app

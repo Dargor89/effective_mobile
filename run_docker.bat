@@ -1,15 +1,15 @@
 @echo off
 echo === Запуск тестов в Docker ===
 
-:: Собираем образ
-docker-compose build
-
-:: Запускаем тесты
-docker-compose up tests
-
-:: Останавливаем контейнеры
+echo Очистка...
 docker-compose down
 
+echo Сборка...
+docker-compose build --no-cache
+
+echo Запуск тестов...
+docker-compose up tests
+
 echo === Тесты завершены ===
-echo Отчеты сохранены в папке ./reports
+echo Проверь отчет: reports/report.html
 pause

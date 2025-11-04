@@ -2,14 +2,14 @@
 
 echo "=== Запуск тестов в Docker ==="
 
+# Очищаем предыдущие контейнеры
+docker-compose down
+
 # Собираем образ
-docker-compose build
+docker-compose build --no-cache
 
 # Запускаем тесты
 docker-compose up tests
 
-# Останавливаем контейнеры
-docker-compose down
-
 echo "=== Тесты завершены ==="
-echo "Отчеты сохранены в папке ./reports"
+echo "Отчет: file://$(pwd)/reports/report.html"

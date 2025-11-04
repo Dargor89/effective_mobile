@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
-from src.pages.main_page import MainPage
+from webdriver_manager.chrome import ChromeDriverManager
 import os
 
 
@@ -50,23 +50,19 @@ def driver(browser_type, is_headless, base_url):
         if browser_type.lower() == "chrome":
             options = Options()
 
-            # Обязательные опции для Docker
+            # Опции для Docker
             options.add_argument("--no-sandbox")
             options.add_argument("--disable-dev-shm-usage")
-            options.add_argument("--disable-gpu")
             options.add_argument("--window-size=1920,1080")
-            options.add_argument("--disable-extensions")
-
-            # В Docker всегда headless
             options.add_argument("--headless=new")
 
-            # Используем удаленный Selenium (в готовом образе)
-            driver = webdriver.Remote(
-                command_executor='http://localhost:4444/wd/hub',
-                options=options
-            )
+            # Путь к драйверу в контейнере
+            driver_path = "/app/drivers/chromedriver"  # или тот путь, где у вас лежит драйвер
 
-            print("✓ ChromeDriver успешно инициализирован через Selenium Grid")
+            service = ChromeService(driver_path)
+            driver = webdriver.Chrome(service=service, options=options)
+
+            print("✓ ChromeDriver успешно инициализирован")
 
         else:
             raise ValueError(f"Unsupported browser: {browser_type}")
@@ -83,9 +79,3 @@ def driver(browser_type, is_headless, base_url):
     finally:
         if driver:
             driver.quit()
-            print("✓ Драйвер закрыт")
-
-
-@pytest.fixture(scope="function")
-def main_page(driver):
-    return MainPage(driver)

@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fa08b16-59cf-4619-ab65-b4f59d045f00" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/effective-mobile-tests.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/effective-mobile-tests.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9fa08b16-59cf-4619-ab65-b4f59d045f00" name="Changes" comment="Test main page">
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reports/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/reports/report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run_docker.bat" beforeDir="false" afterPath="$PROJECT_DIR$/run_docker.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_docker_test.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run_docker.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/conftest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +28,12 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory"><![CDATA[{
@@ -187,7 +196,20 @@
       <option name="presentableId" value="Default" />
       <updated>1761803420130</updated>
     </task>
+    <task id="LOCAL-00001" summary="Test main page">
+      <option name="closed" value="true" />
+      <created>1762241979800</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762241979800</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Test main page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test main page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
